@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public float speed = 4;
     public float jumpForce = 4;
     
+    public Enemy enemy;
     public Animator animator;
     public SpriteRenderer renderer;
     public Rigidbody2D rigidbody;
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
 
     void Attack()
     {
+        enemy.TakeDamage(1);
         animator.SetTrigger("attack");
     }
 

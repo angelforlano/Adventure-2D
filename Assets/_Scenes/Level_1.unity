@@ -715,7 +715,7 @@ GameObject:
   - component: {fileID: 1315516217}
   m_Layer: 0
   m_Name: GroundCollider
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -796,6 +796,7 @@ MonoBehaviour:
   hp: 100
   speed: 4
   jumpForce: 4
+  animator: {fileID: 95346456638848522}
   renderer: {fileID: 212259381695310196}
   rigidbody: {fileID: 50512961270250436}
 --- !u!4 &4805182281467778
@@ -869,7 +870,7 @@ Animator:
   m_GameObject: {fileID: 1689867526068992}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b95265f99b6d90e438df1308a89c8bab, type: 2}
+  m_Controller: {fileID: 9100000, guid: c364f0904c0981740b1720d77afe165f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public SpriteRenderer renderer;
     public Rigidbody2D rigidbody;
 
-    private Enemy enemy;
+    private bool isAttacking;
     private int jumps;
     
     // Start is called before the first frame update
@@ -39,9 +39,9 @@ public class Player : MonoBehaviour
             Jump();
         }
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) && !isAttacking)
         {
-            Attack();
+            StartCoroutine(Attack());
         }
     }
 
@@ -59,8 +59,13 @@ public class Player : MonoBehaviour
         Gizmos.DrawWireSphere(position, damageRadius);
     }
 
-    void Attack()
+    IEnumerator Attack()
     {
+        isAttacking = true;
+        animator.SetTrigger("attack");
+        
+        yield return new WaitForSeconds(0.5f);
+        
         var position = new Vector2(transform.position.x + (renderer.flipX? offset.x:-offset.x), transform.position.y + offset.y);
         var all = Physics2D.OverlapCircleAll(position, damageRadius);
         
@@ -73,7 +78,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        animator.SetTrigger("attack");
+        isAttacking = false;
     }
 
     private void OnCollisionEnter2D(Collision2D other)

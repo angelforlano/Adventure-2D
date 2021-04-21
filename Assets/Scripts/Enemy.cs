@@ -6,20 +6,30 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     public int hp = 3;
+    public float moveVelocity = 2f;
+    public float moveTime = 1.5f;
+    public SpriteRenderer renderer;
     public Image hpBarImage;
 
     int startHp;
+    bool direction;
 
-    // Start is called before the first frame update
     void Start()
     {
         startHp = hp;
+        StartCoroutine(Move());
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (hp <= 0) return;
+
+        if(direction)
+        {
+            transform.Translate(moveVelocity * Time.deltaTime, 0, 0);
+        } else {
+            transform.Translate(-moveVelocity * Time.deltaTime, 0, 0);
+        }
     }
 
     public void TakeDamage(int damage)
@@ -30,6 +40,16 @@ public class Enemy : MonoBehaviour
         if (hp <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+
+    IEnumerator Move()
+    {
+        while (hp > 0)
+        {
+            yield return new WaitForSeconds(moveTime);
+            direction = !direction;
+            renderer.flipX = !renderer.flipX;
         }
     }
 }

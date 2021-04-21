@@ -27,7 +27,8 @@ public class Player : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal") * speed;
 
-        transform.Translate(horizontal * Time.deltaTime, 0, 0);
+        if(!isAttacking)
+            transform.Translate(horizontal * Time.deltaTime, 0, 0);
 
         if (horizontal != 0)
             renderer.flipX = horizontal > 0;

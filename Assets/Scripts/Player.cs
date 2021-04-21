@@ -40,6 +40,22 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(Attack());
         }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("E");
+            var position = new Vector2(transform.position.x + (renderer.flipX? offset.x:-offset.x), transform.position.y + offset.y);
+            var all = Physics2D.OverlapCircleAll(position, damageRadius);
+            
+            for (int i = 0; i < all.Length; i++)
+            {
+                if (all[i].gameObject.CompareTag("Chest"))
+                {
+                    all[i].gameObject.GetComponent<Chest>().Open();
+                    break;
+                }
+            }
+        }
     }
 
     void Jump()

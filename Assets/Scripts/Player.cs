@@ -7,18 +7,19 @@ public class Player : MonoBehaviour
     public int hp = 100;
     public float speed = 4;
     public float jumpForce = 4;
+    public Vector2 offset;
+    public float damageRadius;
     
-    public Enemy enemy;
     public Animator animator;
     public SpriteRenderer renderer;
     public Rigidbody2D rigidbody;
 
+    private Enemy enemy;
     private int jumps;
     
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -42,7 +43,6 @@ public class Player : MonoBehaviour
         {
             Attack();
         }
-
     }
 
     void Jump()
@@ -52,9 +52,27 @@ public class Player : MonoBehaviour
         animator.SetTrigger("jump");
     }
 
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        var position = new Vector2(transform.position.x + (renderer.flipX? offset.x:-offset.x), transform.position.y + offset.y);
+        Gizmos.DrawWireSphere(position, damageRadius);
+    }
+
     void Attack()
     {
-        enemy.TakeDamage(1);
+        var position = new Vector2(transform.position.x + (renderer.flipX? offset.x:-offset.x), transform.position.y + offset.y);
+        var all = Physics2D.OverlapCircleAll(position, damageRadius);
+        
+        for (int i = 0; i < all.Length; i++)
+        {
+            if (all[i].gameObject.CompareTag("Enemies"))
+            {
+                all[i].gameObject.GetComponent<Enemy>().TakeDamage(1);
+                break;
+            }
+        }
+
         animator.SetTrigger("attack");
     }
 

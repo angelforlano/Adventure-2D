@@ -136,9 +136,9 @@ GameObject:
   - component: {fileID: 124887413}
   - component: {fileID: 124887416}
   - component: {fileID: 124887417}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bee
-  m_TagString: Untagged
+  m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -221,7 +221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 124887412}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.56, y: 1.35, z: 0}
+  m_LocalPosition: {x: 0.613, y: -0.365, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2002357005}
@@ -243,7 +243,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.26
+  m_Radius: 0.25
 --- !u!114 &124887417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 151678555}
   - component: {fileID: 151678557}
   - component: {fileID: 151678556}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HP Bar Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -574,7 +574,7 @@ GameObject:
   - component: {fileID: 1031517692}
   - component: {fileID: 1031517694}
   - component: {fileID: 1031517693}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HP Bar BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1057,7 +1057,7 @@ GameObject:
   - component: {fileID: 1578867801}
   - component: {fileID: 1578867800}
   - component: {fileID: 1578867799}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1221,7 +1221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2002357005}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Canvas Scaler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1279,7 +1279,8 @@ MonoBehaviour:
   hp: 100
   speed: 4
   jumpForce: 4
-  enemy: {fileID: 124887417}
+  offset: {x: 0.65, y: 0.65}
+  damageRadius: 0.5
   animator: {fileID: 95346456638848522}
   renderer: {fileID: 212259381695310196}
   rigidbody: {fileID: 50512961270250436}
@@ -1291,7 +1292,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689867526068992}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalPosition: {x: -1.782, y: -1.059, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1342,7 +1343,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 1.2}
+  m_Size: {x: 0.6, y: 1.2}
   m_EdgeRadius: 0
 --- !u!95 &95346456638848522
 Animator:

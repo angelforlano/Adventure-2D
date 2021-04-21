@@ -26,5 +26,10 @@ public class Enemy : MonoBehaviour
     {
         hp -= damage;
         hpBarImage.fillAmount = (float) hp/startHp;
+
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public SpriteRenderer renderer;
     public Rigidbody2D rigidbody;
 
+    private int stars;
     private bool isAttacking;
     private int jumps;
     
@@ -83,6 +84,15 @@ public class Player : MonoBehaviour
         {
             jumps=0;
             animator.SetTrigger("idle");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Star"))
+        {
+            stars++;
+            Destroy(other.gameObject);
         }
     }
 }

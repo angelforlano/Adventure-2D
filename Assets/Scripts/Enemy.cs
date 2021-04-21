@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public float moveTime = 1.5f;
     public SpriteRenderer renderer;
     public Image hpBarImage;
+    public GameObject deathVfx;
 
     int startHp;
     bool direction;
@@ -39,7 +40,9 @@ public class Enemy : MonoBehaviour
 
         if (hp <= 0)
         {
+            var vfx = Instantiate(deathVfx, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            Destroy(vfx, 0.5f);
         }
     }
 

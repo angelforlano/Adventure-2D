@@ -430,3 +430,5 @@ MonoBehaviour:
   moveTime: 4
   renderer: {fileID: 2879657088533089488}
   hpBarImage: {fileID: 2879657088492313434}
+  deathVfx: {fileID: 234028445578805936, guid: 548500d52bb04e548ba80a9abcbcd834, type: 3}
+  deathSfx: {fileID: 7749813640052099557, guid: e1b3ec660742b3946aef8cdc2129ffeb, type: 3}

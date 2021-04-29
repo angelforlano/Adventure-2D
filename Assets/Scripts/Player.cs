@@ -7,14 +7,14 @@ public class Player : MonoBehaviour
     public int hp = 100;
     public float speed = 4;
     public float jumpForce = 4;
+    public int stars;
     public Vector2 offset;
     public float damageRadius;
     
     public Animator animator;
     public SpriteRenderer renderer;
     public Rigidbody2D rigidbody;
-
-    private int stars;
+    
     private bool isAttacking;
     private int jumps;
     
@@ -43,7 +43,6 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("E");
             var position = new Vector2(transform.position.x + (renderer.flipX? offset.x:-offset.x), transform.position.y + offset.y);
             var all = Physics2D.OverlapCircleAll(position, damageRadius);
             
@@ -51,7 +50,7 @@ public class Player : MonoBehaviour
             {
                 if (all[i].gameObject.CompareTag("Chest"))
                 {
-                    all[i].gameObject.GetComponent<Chest>().Open();
+                    all[i].gameObject.GetComponent<Chest>().Open(this);
                     break;
                 }
             }

@@ -19,6 +19,14 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        var factor = Random.Range(0, 100);
+        var sppedFactor = Random.Range(0f, 0.25f);
+        
+        moveVelocity += sppedFactor;
+        
+        if (factor > 80)
+            hp++;
+
         startHp = hp;
         StartCoroutine(Move());
     }

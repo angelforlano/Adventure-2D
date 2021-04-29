@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class Chest : MonoBehaviour
 {
+    public AudioSource starSfx;
     public Animator chestAnimator;
-    public Animator startAnimator;
+    public Animator starAnimator;
     private bool open;
 
-    public void Open()
+    public void Open(Player player)
     {
         if (open) return;
         
         open = true;
+        player.stars++;
+        
+        starSfx.Play();
         chestAnimator.SetTrigger("Open");
-        startAnimator.SetTrigger("Open");
+        starAnimator.SetTrigger("Open");
+    
+        Destroy(starAnimator.gameObject, 1f);
     }
 }

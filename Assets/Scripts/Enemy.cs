@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     public int hp = 3;
+    public int damage = 1;
     public float moveVelocity = 2f;
     public float moveTime = 1.5f;
     public SpriteRenderer renderer;
@@ -67,6 +68,14 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(moveTime);
             direction = !direction;
             renderer.flipX = !renderer.flipX;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<Player>().TakeDamage(damage);
         }
     }
 }

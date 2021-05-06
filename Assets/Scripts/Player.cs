@@ -18,9 +18,10 @@ public class Player : MonoBehaviour
     private bool isAttacking;
     private int jumps;
     
-    // Update is called once per frame
     void Update()
     {
+        if (hp <= 0) return;
+        
         float horizontal = Input.GetAxis("Horizontal") * speed;
 
         if(!isAttacking)
@@ -57,21 +58,21 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Jump()
+    private void Jump()
     {
         jumps++;
         rigidbody.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
         animator.SetTrigger("jump");
     }
 
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         var position = new Vector2(transform.position.x + (renderer.flipX? offset.x:-offset.x), transform.position.y + offset.y);
         Gizmos.DrawWireSphere(position, damageRadius);
     }
 
-    IEnumerator Attack()
+    private IEnumerator Attack()
     {
         isAttacking = true;
         animator.SetTrigger("attack");
@@ -108,6 +109,21 @@ public class Player : MonoBehaviour
         {
             stars++;
             Destroy(other.gameObject);
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (hp <= 0) return;
+
+        hp -= damage;
+        animator.SetTrigger("hurt");
+        Debug.Log("Player Take " + damage + " damage");
+
+        if(hp <= 0)
+        {
+            Debug.Log("Player Die");
+            animator.SetTrigger("die");
         }
     }
 }

@@ -15,13 +15,24 @@ public class Player : MonoBehaviour
     public SpriteRenderer renderer;
     public Rigidbody2D rigidbody;
     
+    private int startHp;
     private bool isAttacking;
     private int jumps;
+
+    public float HpPercent
+    {
+        get { return (float) hp / startHp;}
+    }
+
+    private void Start()
+    {
+        startHp = hp;
+    }
     
     void Update()
     {
         if (hp <= 0) return;
-        
+
         float horizontal = Input.GetAxis("Horizontal") * speed;
 
         if(!isAttacking)

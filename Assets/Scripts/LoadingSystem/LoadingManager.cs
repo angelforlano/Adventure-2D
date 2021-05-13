@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class LoadingManager : MonoBehaviour
 {
-    public static LoadingManager Instance;
     public string sceneToLoad;
-
+    
+    public static LoadingManager Instance;
+    
     void Awake()
     {
         if (Instance == null)
